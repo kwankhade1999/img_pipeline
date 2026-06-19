@@ -15,12 +15,13 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    cd img_pipeline/adservice
-                    printenv
-                    docker build -t ${IMAGE_NAME} .
-                '''
-            }
+                dir('adservice') {
+                    sh '''
+                        cd img_pipeline/adservice
+                        printenv
+                        docker build -t ${IMAGE_NAME} .
+                    '''
+                }
         }
 
         stage('Login to Docker Hub') {
