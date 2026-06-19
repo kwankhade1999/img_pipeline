@@ -1,0 +1,271 @@
+{{ define "register" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register – QUNTAMVECTOR EKART</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ $.baseUrl }}/static/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ $.baseUrl }}/static/styles/itk-fashion.css">
+    <link rel="stylesheet" type="text/css" href="{{ $.baseUrl }}/static/styles/styles.css">
+    <link rel='shortcut icon' type='image/x-icon' href='{{ $.baseUrl }}/static/favicon.ico' />
+    <style>
+        body {
+            background: #f8f4f6;
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* ── Announcement bar ── */
+        .itk-announce-bar {
+            background: linear-gradient(90deg, #3e0925 0%, #8c0d4f 100%);
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 500;
+            padding: 7px 0;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+        .itk-announce-bar strong { color: #f5a623; }
+        .itk-announce-highlight { color: #f5a623; font-weight: 700; }
+
+        /* ── Auth header ── */
+        .auth-header {
+            background: linear-gradient(135deg, #3e0925 0%, #8c0d4f 100%);
+            padding: 16px 0;
+            box-shadow: 0 2px 12px rgba(62,9,37,0.25);
+        }
+        .auth-header .brand {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 1.5px;
+            font-family: 'Quicksand', 'DM Sans', sans-serif;
+        }
+        .auth-header .brand span {
+            color: #f5a623;
+            font-weight: 700;
+        }
+        .auth-header .brand:hover { text-decoration: none; opacity: 0.9; }
+
+        /* ── Page layout ── */
+        .auth-page-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 16px;
+        }
+
+        /* ── Card ── */
+        .auth-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 32px rgba(140,13,79,0.12);
+            padding: 44px 40px;
+            width: 100%;
+            max-width: 440px;
+        }
+        .auth-card-logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .auth-card-logo .logo-icon {
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, #3e0925, #8c0d4f);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .auth-card h2 {
+            font-family: 'Quicksand', 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #3e0925;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .auth-card .subtitle {
+            color: #6c757d;
+            margin-bottom: 28px;
+            font-size: 0.93rem;
+            text-align: center;
+        }
+
+        /* ── Form inputs ── */
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #3e0925;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            border: 1.5px solid #e8dce4;
+            border-radius: 7px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            color: #212529;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-control:focus {
+            border-color: #8c0d4f;
+            box-shadow: 0 0 0 3px rgba(140,13,79,0.12);
+            outline: none;
+        }
+
+        /* ── Submit button ── */
+        .btn-auth {
+            background: linear-gradient(135deg, #8c0d4f 0%, #3e0925 100%);
+            color: #fff;
+            border: none;
+            padding: 11px 0;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 7px;
+            width: 100%;
+            margin-top: 10px;
+            letter-spacing: 0.4px;
+            font-family: 'Quicksand', 'DM Sans', sans-serif;
+            transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(140,13,79,0.25);
+        }
+        .btn-auth:hover {
+            background: linear-gradient(135deg, #f5a623 0%, #e09000 100%);
+            color: #3e0925;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(245,166,35,0.35);
+        }
+
+        /* ── Switch link ── */
+        .auth-switch {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 0.93rem;
+            color: #6c757d;
+        }
+        .auth-switch a {
+            color: #8c0d4f;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .auth-switch a:hover {
+            color: #3e0925;
+            text-decoration: underline;
+        }
+
+        /* ── Divider ── */
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0 18px;
+            color: #bbb;
+            font-size: 0.82rem;
+        }
+        .auth-divider::before, .auth-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e8dce4;
+        }
+
+        .alert-auth { font-size: 0.92rem; border-radius: 7px; }
+
+        /* ── Footer strip ── */
+        .auth-footer {
+            text-align: center;
+            padding: 18px 0;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        @media (max-width: 480px) {
+            .auth-card { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcement bar -->
+    <div class="itk-announce-bar">
+        <span>&#127881; Free Shipping on orders above <strong>₹999</strong> &nbsp;|&nbsp; COD Available &nbsp;|&nbsp; <span class="itk-announce-highlight">New Collection 2026 is here!</span></span>
+    </div>
+
+    <!-- Header -->
+    <div class="auth-header">
+        <div class="container">
+            <a href="{{ $.baseUrl }}/" class="brand">QUNTAMVECTOR <span>EKART</span></a>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="auth-page-body">
+        <div class="auth-card">
+            <div class="auth-card-logo">
+                <div class="logo-icon">
+                    <i class="bi bi-person-plus-fill"></i>
+                </div>
+                <h2>Create account</h2>
+                <p class="subtitle">Join QUNTAMVECTOR EKART today</p>
+            </div>
+
+            {{ if $.error }}
+            <div class="alert alert-danger alert-auth" role="alert">
+                <i class="bi bi-exclamation-circle-fill mr-1"></i> {{ $.error }}
+            </div>
+            {{ end }}
+
+            <form method="POST" action="{{ $.baseUrl }}/register">
+                <div class="form-group">
+                    <label for="username"><i class="bi bi-person mr-1"></i>Username</label>
+                    <input type="text" class="form-control" id="username" name="username"
+                           placeholder="Choose a username" required autofocus
+                           value="{{ $.username }}">
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="bi bi-envelope mr-1"></i>Email address</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           placeholder="Enter your email" required
+                           value="{{ $.email }}">
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="bi bi-lock mr-1"></i>Password</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Create a password (min 6 characters)" required minlength="6">
+                </div>
+                <button type="submit" class="btn btn-auth">
+                    <i class="bi bi-person-check mr-1"></i> Create Account
+                </button>
+            </form>
+
+            <div class="auth-divider">or</div>
+
+            <div class="auth-switch">
+                Already have an account? <a href="{{ $.baseUrl }}/login">Sign in here</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-footer">
+        &copy; 2026 <strong style="color:#8c0d4f;">Quntamvector</strong>. Demo Application.
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+{{ end }}

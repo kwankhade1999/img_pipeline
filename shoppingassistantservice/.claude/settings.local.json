@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for dir:*)",
+      "Bash(do echo:*)",
+      "Read(//Users/manojkrishnappa/Microservice/QuntamVectorRepos/**)",
+      "Bash(done)",
+      "Bash(grep -r @app.route /Users/manojkrishnappa/Microservice/QuntamVectorRepos/*/)"
+    ]
+  }
+}

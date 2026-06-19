@@ -1,0 +1,6 @@
+.gradle/
+target/
+node_modules/
+*.log
+*.tfstate
+.terraform/

@@ -1,0 +1,448 @@
+{
+    "products": [
+        {
+            "id": "OLJCESPC7Z",
+            "name": "Sunglasses",
+            "description": "Add a modern touch to your outfits with these sleek aviator sunglasses.",
+            "picture": "/static/img/products/sunglasses.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 19,
+                "nanos": 990000000
+            },
+            "categories": ["accessories"]
+        },
+        {
+            "id": "66VCHSJNUP",
+            "name": "Tank Top",
+            "description": "Perfectly cropped cotton tank, with a scooped neckline.",
+            "picture": "/static/img/products/tank-top.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 18,
+                "nanos": 990000000
+            },
+            "categories": ["clothing", "tops"]
+        },
+        {
+            "id": "1YMWWN1N4O",
+            "name": "Watch",
+            "description": "This gold-tone stainless steel watch will work with most of your outfits.",
+            "picture": "/static/img/products/watch.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 109,
+                "nanos": 990000000
+            },
+            "categories": ["accessories"]
+        },
+        {
+            "id": "L9ECAV7KIM",
+            "name": "Loafers",
+            "description": "A neat addition to your summer wardrobe.",
+            "picture": "/static/img/products/loafers.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 89,
+                "nanos": 990000000
+            },
+            "categories": ["footwear"]
+        },
+        {
+            "id": "2ZYFJ3GM2N",
+            "name": "Hairdryer",
+            "description": "This lightweight hairdryer has 3 heat and speed settings. It's perfect for travel.",
+            "picture": "/static/img/products/hairdryer.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 24,
+                "nanos": 990000000
+            },
+            "categories": ["hair", "beauty"]
+        },
+        {
+            "id": "0PUK6V6EV0",
+            "name": "Candle Holder",
+            "description": "This small but intricate candle holder is an excellent gift.",
+            "picture": "/static/img/products/candle-holder.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 18,
+                "nanos": 990000000
+            },
+            "categories": ["decor", "home"]
+        },
+        {
+            "id": "LS4PSXUNUM",
+            "name": "Salt & Pepper Shakers",
+            "description": "Add some flavor to your kitchen.",
+            "picture": "/static/img/products/salt-and-pepper-shakers.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 18,
+                "nanos": 490000000
+            },
+            "categories": ["kitchen"]
+        },
+        {
+            "id": "9SIQT8TOJO",
+            "name": "Bamboo Glass Jar",
+            "description": "This bamboo glass jar can hold 57 oz (1.7 l) and is perfect for any kitchen.",
+            "picture": "/static/img/products/bamboo-glass-jar.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 5,
+                "nanos": 490000000
+            },
+            "categories": ["kitchen"]
+        },
+        {
+            "id": "6E92ZMYYFZ",
+            "name": "Mug",
+            "description": "A simple mug with a mustard interior.",
+            "picture": "/static/img/products/mug.jpg",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 8,
+                "nanos": 990000000
+            },
+            "categories": ["kitchen"]
+        },
+        {
+            "id": "WF01FLDRES",
+            "name": "Floral Wrap Dress",
+            "description": "A beautiful floral wrap dress perfect for summer outings. Soft fabric with vibrant prints.",
+            "picture": "/static/images/product-f-1.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 15,
+                "nanos": 990000000
+            },
+            "categories": ["women", "dresses"]
+        },
+        {
+            "id": "WF02KURTAS",
+            "name": "Embroidered Kurta Set",
+            "description": "Elegant embroidered kurta set with palazzo pants. Perfect for festive occasions.",
+            "picture": "/static/images/product-f-2.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 18,
+                "nanos": 990000000
+            },
+            "categories": ["women", "ethnic", "kurta"]
+        },
+        {
+            "id": "WF03PALZZO",
+            "name": "Summer Palazzo Combo",
+            "description": "Breezy palazzo pants paired with a matching top. Ideal for casual summer days.",
+            "picture": "/static/images/product-f-3.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 14,
+                "nanos": 990000000
+            },
+            "categories": ["women", "bottomwear", "summer"]
+        },
+        {
+            "id": "WF04MIDRES",
+            "name": "Casual Midi Dress",
+            "description": "A versatile casual midi dress that works for brunch or an evening out.",
+            "picture": "/static/images/product-f-4.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 17,
+                "nanos": 490000000
+            },
+            "categories": ["women", "dresses"]
+        },
+        {
+            "id": "WF05ANKALI",
+            "name": "Printed Anarkali",
+            "description": "Stunning printed Anarkali suit with intricate details. A statement ethnic wear.",
+            "picture": "/static/images/product-f-5.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 22,
+                "nanos": 990000000
+            },
+            "categories": ["women", "ethnic", "anarkali"]
+        },
+        {
+            "id": "WF06DKURTI",
+            "name": "Designer Kurti",
+            "description": "Chic designer kurti with contemporary prints. Pairs well with jeans or leggings.",
+            "picture": "/static/images/product-f-6.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 12,
+                "nanos": 990000000
+            },
+            "categories": ["women", "ethnic", "kurti"]
+        },
+        {
+            "id": "WF07BLAZER",
+            "name": "Formal Blazer Set",
+            "description": "Power-dressing blazer set for the modern professional woman.",
+            "picture": "/static/images/product-f-7.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 35,
+                "nanos": 990000000
+            },
+            "categories": ["women", "formal", "blazer"]
+        },
+        {
+            "id": "WF08EVGOWN",
+            "name": "Cocktail Evening Gown",
+            "description": "Glamorous cocktail gown for evening events and special occasions.",
+            "picture": "/static/images/product-f-8.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 45,
+                "nanos": 990000000
+            },
+            "categories": ["women", "party", "gown"]
+        },
+        {
+            "id": "WF11INDWES",
+            "name": "Indo-Western Fusion",
+            "description": "A trendy Indo-Western fusion outfit blending traditional and contemporary styles.",
+            "picture": "/static/images/product-f-11.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 28,
+                "nanos": 990000000
+            },
+            "categories": ["women", "ethnic", "fusion"]
+        },
+        {
+            "id": "WF13PTYGWN",
+            "name": "Luxury Party Gown",
+            "description": "Make heads turn with this luxurious party gown featuring rich fabric and elegant cut.",
+            "picture": "/static/images/product-f-13.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 55,
+                "nanos": 990000000
+            },
+            "categories": ["women", "party", "gown"]
+        },
+        {
+            "id": "WF18SHGOWN",
+            "name": "Elegant Sherwani-Style Gown",
+            "description": "An exquisite Sherwani-inspired gown with detailed embroidery. Perfect for grand celebrations.",
+            "picture": "/static/images/product-f-18.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 65,
+                "nanos": 990000000
+            },
+            "categories": ["women", "ethnic", "gown"]
+        },
+        {
+            "id": "MM01LNSHRT",
+            "name": "Classic Linen Shirt",
+            "description": "Breathable classic linen shirt for a relaxed summer look. Available in multiple colours.",
+            "picture": "/static/images/product-m-1.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 16,
+                "nanos": 990000000
+            },
+            "categories": ["men", "shirts", "summer"]
+        },
+        {
+            "id": "MM02CHINOS",
+            "name": "Slim Fit Chinos",
+            "description": "Versatile slim fit chinos that dress up or down with ease.",
+            "picture": "/static/images/product-m-2.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 24,
+                "nanos": 990000000
+            },
+            "categories": ["men", "bottomwear", "chinos"]
+        },
+        {
+            "id": "MM03CTPOLO",
+            "name": "Casual Cotton Polo",
+            "description": "Everyday casual cotton polo shirt with a comfortable regular fit.",
+            "picture": "/static/images/product-m-3.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 13,
+                "nanos": 990000000
+            },
+            "categories": ["men", "tops", "polo"]
+        },
+        {
+            "id": "MM04FMSHRT",
+            "name": "Formal Dress Shirt",
+            "description": "Crisp formal dress shirt in premium cotton. Ideal for office and formal events.",
+            "picture": "/static/images/product-m-4.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 20,
+                "nanos": 990000000
+            },
+            "categories": ["men", "shirts", "formal"]
+        },
+        {
+            "id": "MM05DNJCKT",
+            "name": "Denim Jacket",
+            "description": "Timeless denim jacket with a classic silhouette. A wardrobe essential.",
+            "picture": "/static/images/product-m-5.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 38,
+                "nanos": 990000000
+            },
+            "categories": ["men", "jackets", "denim"]
+        },
+        {
+            "id": "MM06ETKRTA",
+            "name": "Ethnic Kurta",
+            "description": "Comfortable and stylish ethnic kurta for festive and casual occasions.",
+            "picture": "/static/images/product-m-6.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 15,
+                "nanos": 490000000
+            },
+            "categories": ["men", "ethnic", "kurta"]
+        },
+        {
+            "id": "MM07SPTEES",
+            "name": "Sports Performance Tee",
+            "description": "High-performance sports tee with moisture-wicking fabric for active lifestyles.",
+            "picture": "/static/images/product-m-7.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 11,
+                "nanos": 990000000
+            },
+            "categories": ["men", "sportswear", "tops"]
+        },
+        {
+            "id": "MM08DSGNJT",
+            "name": "Designer Suit",
+            "description": "Impeccably tailored designer suit for weddings and formal occasions.",
+            "picture": "/static/images/product-m-8.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 95,
+                "nanos": 990000000
+            },
+            "categories": ["men", "formal", "suit"]
+        },
+        {
+            "id": "MM11CSBLZR",
+            "name": "Casual Blazer",
+            "description": "Smart casual blazer that elevates any outfit instantly.",
+            "picture": "/static/images/product-m-11.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 48,
+                "nanos": 990000000
+            },
+            "categories": ["men", "blazer", "casual"]
+        },
+        {
+            "id": "MM12PRHDIE",
+            "name": "Premium Hoodie",
+            "description": "Ultra-soft premium hoodie for cosy days. Relaxed fit with kangaroo pocket.",
+            "picture": "/static/images/product-m-12.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 29,
+                "nanos": 990000000
+            },
+            "categories": ["men", "casual", "hoodie"]
+        },
+        {
+            "id": "MM19ATJOGR",
+            "name": "Athleisure Jogger Set",
+            "description": "Comfortable athleisure jogger set for workouts or lounging.",
+            "picture": "/static/images/product-m-19.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 32,
+                "nanos": 990000000
+            },
+            "categories": ["men", "sportswear", "jogger"]
+        },
+        {
+            "id": "TR01BOHTOP",
+            "name": "Boho Chic Crop Top",
+            "description": "Trendy boho chic crop top with flutter sleeves. A festival favourite.",
+            "picture": "/static/images/product-1.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 10,
+                "nanos": 990000000
+            },
+            "categories": ["women", "tops", "trending"]
+        },
+        {
+            "id": "TR02STRJKT",
+            "name": "Streetwear Jacket",
+            "description": "Bold streetwear jacket with graphic details. Stand out from the crowd.",
+            "picture": "/static/images/product-2.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 42,
+                "nanos": 990000000
+            },
+            "categories": ["unisex", "jackets", "trending"]
+        },
+        {
+            "id": "TR03STJEAN",
+            "name": "Street Style Jeans",
+            "description": "Edgy street style jeans with distressed details. A must-have for casual looks.",
+            "picture": "/static/images/product-3.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 26,
+                "nanos": 990000000
+            },
+            "categories": ["unisex", "bottomwear", "trending"]
+        },
+        {
+            "id": "TR04OCRDST",
+            "name": "Oversized Co-ord Set",
+            "description": "Matching oversized co-ord set for an effortlessly cool look.",
+            "picture": "/static/images/product-4.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 33,
+                "nanos": 990000000
+            },
+            "categories": ["women", "coord", "trending"]
+        },
+        {
+            "id": "TR05LCBLSE",
+            "name": "Lace Detail Blouse",
+            "description": "Feminine lace detail blouse that pairs beautifully with skirts or trousers.",
+            "picture": "/static/images/product-5.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 14,
+                "nanos": 490000000
+            },
+            "categories": ["women", "tops", "trending"]
+        },
+        {
+            "id": "TR06UTILCP",
+            "name": "Utility Cargo Pants",
+            "description": "Functional utility cargo pants with multiple pockets. Style meets practicality.",
+            "picture": "/static/images/product-6.webp",
+            "priceUsd": {
+                "currencyCode": "USD",
+                "units": 28,
+                "nanos": 990000000
+            },
+            "categories": ["unisex", "bottomwear", "trending"]
+        }
+    ]
+}

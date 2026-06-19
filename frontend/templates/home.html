@@ -1,0 +1,962 @@
+{{ define "home" }}
+{{ template "header" . }}
+
+<div {{ with $.platform_css }} class="{{.}}" {{ end }}>
+  <span class="platform-flag">{{$.platform_name}}</span>
+</div>
+
+<!-- ====================================================
+     HERO
+===================================================== -->
+<section class="fs-hero">
+  <div class="fs-hero-bg"></div>
+  <div class="fs-hero-overlay"></div>
+  <div class="container">
+    <div class="row align-items-center" style="min-height:520px;">
+      <div class="col-12 col-lg-6 fs-hero-content" data-aos="fade-right">
+        <div class="badge-pill">&#10024; New Collection 2026</div>
+        <h1>Your Style,<br><span>Your Statement</span></h1>
+        <p>Explore premium fashion for men &amp; women. Curated collections delivered across India with free shipping on orders above ₹999.</p>
+        <div class="d-flex flex-wrap mt-3" style="gap:12px;">
+          <a href="#catalog" class="fs-btn-hero">Shop Now &rarr;</a>
+          <a href="{{ $.baseUrl }}/cart" class="fs-btn-hero-outline">View Cart</a>
+        </div>
+        <div class="mt-4 d-flex" style="gap:28px;">
+          <div style="text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#f5a623;">500+</div>
+            <div style="font-size:0.75rem;opacity:0.75;">Products</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#f5a623;">10K+</div>
+            <div style="font-size:0.75rem;opacity:0.75;">Customers</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:1.4rem;font-weight:800;color:#f5a623;">4.8&#9733;</div>
+            <div style="font-size:0.75rem;opacity:0.75;">Rating</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-none d-lg-flex justify-content-end" data-aos="fade-left" data-aos-delay="150">
+        <div class="fs-hero-imgs">
+          <div class="fs-hero-img-main">
+            <img src="/static/images/blog-hero-2.webp" alt="Fashion Hero">
+          </div>
+          <div class="fs-hero-img-stack">
+            <div><img src="/static/images/product-f-1.webp" alt="Women Fashion"></div>
+            <div><img src="/static/images/product-m-1.webp" alt="Men Fashion"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     FEATURES STRIP
+===================================================== -->
+<div class="fs-features-strip">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-6 col-md-3">
+        <div class="fs-feature-item justify-content-center">
+          <div class="fs-feature-icon"><i class="bi bi-truck"></i></div>
+          <div class="fs-feature-text">
+            <strong>Free Shipping</strong><span>On orders ₹999+</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="fs-feature-item justify-content-center">
+          <div class="fs-feature-icon"><i class="bi bi-arrow-return-left"></i></div>
+          <div class="fs-feature-text">
+            <strong>Easy Returns</strong><span>30-day return policy</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="fs-feature-item justify-content-center">
+          <div class="fs-feature-icon"><i class="bi bi-shield-check"></i></div>
+          <div class="fs-feature-text">
+            <strong>100% Authentic</strong><span>Genuine products only</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="fs-feature-item justify-content-center">
+          <div class="fs-feature-icon"><i class="bi bi-headset"></i></div>
+          <div class="fs-feature-text">
+            <strong>24/7 Support</strong><span>We're always here</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main role="main">
+
+<!-- ====================================================
+     ROWS 1-3 : CATALOG PRODUCTS (REAL BACKEND DATA)
+===================================================== -->
+<section class="fs-section" id="catalog">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">Catalog</span>
+      <h2>Featured Products</h2>
+      <p>Handpicked items from our catalog</p>
+    </div>
+    <div class="row fs-products-row">
+      {{ range $.products }}
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="{{ $.baseUrl }}{{.Item.Picture}}" alt="{{ .Item.Name }}">
+            <span class="fs-product-badge hot">Hot</span>
+            <div class="fs-product-overlay">
+              <a href="{{ $.baseUrl }}/product/{{.Item.Id}}">View Product</a>
+            </div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/{{.Item.Id}}">{{ .Item.Name }}</a></h3>
+            <div class="fs-product-price">{{ renderMoney .Price }}</div>
+            <div class="fs-stars">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+              <span class="review-count">(124 reviews)</span>
+            </div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="{{.Item.Id}}">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     PROMO BANNER
+===================================================== -->
+<div class="fs-promo-banner" data-aos="fade-up">
+  <div class="container">
+    <h3>Women's Collection <span>2026</span></h3>
+    <p>Stunning styles for every occasion — from casual to party wear</p>
+    <a href="#womens" class="fs-btn-hero">Explore Now</a>
+  </div>
+</div>
+
+<!-- ====================================================
+     ROWS 4-6 : WOMEN'S COLLECTION
+===================================================== -->
+<section class="fs-section fs-section-alt" id="womens">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">Women's</span>
+      <h2>Women's Collection</h2>
+      <p>Elegant &amp; trendy styles crafted for you</p>
+    </div>
+    <div class="row fs-products-row">
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-1.webp" alt="Floral Wrap Dress">
+            <span class="fs-product-badge new">New</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF01FLDRES">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF01FLDRES">Floral Wrap Dress</a></h3>
+            <div class="fs-product-price">₹1,299 <span class="original">₹1,899</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(120)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF01FLDRES">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-2.webp" alt="Embroidered Kurta Set">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF02KURTAS">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF02KURTAS">Embroidered Kurta Set</a></h3>
+            <div class="fs-product-price">₹899 <span class="original">₹1,299</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(85)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF02KURTAS">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-3.webp" alt="Summer Palazzo Combo">
+            <span class="fs-product-badge sale">-25%</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF03PALZZO">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF03PALZZO">Summer Palazzo Combo</a></h3>
+            <div class="fs-product-price">₹1,499 <span class="original">₹1,999</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span class="review-count">(210)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF03PALZZO">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-4.webp" alt="Casual Midi Dress">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF04MIDRES">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF04MIDRES">Casual Midi Dress</a></h3>
+            <div class="fs-product-price">₹1,149</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(67)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF04MIDRES">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-5.webp" alt="Printed Anarkali">
+            <span class="fs-product-badge new">New</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF05ANKALI">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF05ANKALI">Printed Anarkali Suit</a></h3>
+            <div class="fs-product-price">₹1,799 <span class="original">₹2,499</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(145)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF05ANKALI">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-6.webp" alt="Designer Kurti">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF06DKURTI">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF06DKURTI">Designer Kurti</a></h3>
+            <div class="fs-product-price">₹699</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span class="review-count">(93)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF06DKURTI">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-7.webp" alt="Formal Blazer Set">
+            <span class="fs-product-badge sale">-20%</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF07BLAZER">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF07BLAZER">Formal Blazer Set</a></h3>
+            <div class="fs-product-price">₹2,299 <span class="original">₹2,899</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(56)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF07BLAZER">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-8.webp" alt="Cocktail Evening Gown">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF08EVGOWN">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF08EVGOWN">Cocktail Evening Gown</a></h3>
+            <div class="fs-product-price">₹2,899</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(78)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF08EVGOWN">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-11.webp" alt="Indo-Western Fusion">
+            <span class="fs-product-badge new">New</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF11INDWES">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF11INDWES">Indo-Western Fusion Dress</a></h3>
+            <div class="fs-product-price">₹1,599 <span class="original">₹2,199</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span class="review-count">(112)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF11INDWES">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-13.webp" alt="Luxury Party Gown">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF13PTYGWN">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF13PTYGWN">Luxury Party Gown</a></h3>
+            <div class="fs-product-price">₹3,499</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(44)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF13PTYGWN">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-f-18.webp" alt="Elegant Sherwani-Style">
+            <span class="fs-product-badge sale">-30%</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/WF18SHGOWN">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/WF18SHGOWN">Elegant Sherwani-Style Dress</a></h3>
+            <div class="fs-product-price">₹2,799 <span class="original">₹3,999</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(91)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="WF18SHGOWN">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-1.webp" alt="Boho Chic Crop Top">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/TR01BOHTOP">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/TR01BOHTOP">Boho Chic Crop Top</a></h3>
+            <div class="fs-product-price">₹849</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span class="review-count">(138)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="TR01BOHTOP">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     PROMO BANNER 2
+===================================================== -->
+<div class="fs-promo-banner" data-aos="fade-up">
+  <div class="container">
+    <h3>Men's Collection <span>2026</span></h3>
+    <p>Smart casuals to sharp formals — dress for every occasion</p>
+    <a href="#mens" class="fs-btn-hero">Explore Now</a>
+  </div>
+</div>
+
+<!-- ====================================================
+     ROWS 7-9 : MEN'S COLLECTION
+===================================================== -->
+<section class="fs-section" id="mens">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">Men's</span>
+      <h2>Men's Collection</h2>
+      <p>Sharp, comfortable &amp; stylish — made for modern men</p>
+    </div>
+    <div class="row fs-products-row">
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-1.webp" alt="Classic Linen Shirt">
+            <span class="fs-product-badge new">New</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM01LNSHRT">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM01LNSHRT">Classic Linen Shirt</a></h3>
+            <div class="fs-product-price">₹799 <span class="original">₹1,199</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(230)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM01LNSHRT">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-2.webp" alt="Slim Fit Chinos">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM02CHINOS">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM02CHINOS">Slim Fit Chinos</a></h3>
+            <div class="fs-product-price">₹1,299</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(188)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM02CHINOS">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-3.webp" alt="Casual Cotton Polo">
+            <span class="fs-product-badge sale">-15%</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM03CTPOLO">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM03CTPOLO">Casual Cotton Polo</a></h3>
+            <div class="fs-product-price">₹499 <span class="original">₹599</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(310)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM03CTPOLO">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-4.webp" alt="Formal Dress Shirt">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM04FMSHRT">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM04FMSHRT">Formal Dress Shirt</a></h3>
+            <div class="fs-product-price">₹1,099</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span class="review-count">(95)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM04FMSHRT">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-5.webp" alt="Denim Jacket">
+            <span class="fs-product-badge hot">Hot</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM05DNJCKT">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM05DNJCKT">Denim Jacket</a></h3>
+            <div class="fs-product-price">₹1,899 <span class="original">₹2,499</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(142)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM05DNJCKT">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-6.webp" alt="Ethnic Kurta">
+            <span class="fs-product-badge new">New</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM06ETKRTA">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM06ETKRTA">Ethnic Kurta</a></h3>
+            <div class="fs-product-price">₹899</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(267)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM06ETKRTA">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-7.webp" alt="Sports Performance Tee">
+            <span class="fs-product-badge sale">-10%</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM07SPTEES">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM07SPTEES">Sports Performance Tee</a></h3>
+            <div class="fs-product-price">₹699 <span class="original">₹799</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span class="review-count">(178)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM07SPTEES">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-8.webp" alt="Designer Suit">
+            <span class="fs-product-badge hot">Premium</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM08DSGNJT">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM08DSGNJT">Designer Suit (2-Piece)</a></h3>
+            <div class="fs-product-price">₹4,999 <span class="original">₹6,999</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(42)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM08DSGNJT">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-11.webp" alt="Casual Blazer">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM11CSBLZR">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM11CSBLZR">Casual Blazer</a></h3>
+            <div class="fs-product-price">₹2,499</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(66)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM11CSBLZR">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-12.webp" alt="Premium Hoodie">
+            <span class="fs-product-badge new">New</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM12PRHDIE">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM12PRHDIE">Premium Hoodie</a></h3>
+            <div class="fs-product-price">₹1,499 <span class="original">₹1,999</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(256)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM12PRHDIE">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-m-19.webp" alt="Athleisure Jogger Set">
+            <span class="fs-product-badge sale">-20%</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/MM19ATJOGR">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/MM19ATJOGR">Athleisure Jogger Set</a></h3>
+            <div class="fs-product-price">₹1,199 <span class="original">₹1,499</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><span class="review-count">(189)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="MM19ATJOGR">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-2.webp" alt="Streetwear Jacket">
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/TR02STRJKT">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/TR02STRJKT">Streetwear Jacket</a></h3>
+            <div class="fs-product-price">₹2,199</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(104)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="TR02STRJKT">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     ROW 10 : TRENDING NOW
+===================================================== -->
+<section class="fs-section fs-section-alt">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">Trending</span>
+      <h2>Trending Now</h2>
+      <p>What everyone is buying this season</p>
+    </div>
+    <div class="row fs-products-row">
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-3.webp" alt="Street Style Jeans">
+            <span class="fs-product-badge hot">Trending</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/TR03STJEAN">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/TR03STJEAN">Street Style Jeans</a></h3>
+            <div class="fs-product-price">₹1,799 <span class="original">₹2,299</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(320)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="TR03STJEAN">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-4.webp" alt="Oversized Co-ord Set">
+            <span class="fs-product-badge hot">Trending</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/TR04OCRDST">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/TR04OCRDST">Oversized Co-ord Set</a></h3>
+            <div class="fs-product-price">₹1,649</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(275)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="TR04OCRDST">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-5.webp" alt="Lace Detail Blouse">
+            <span class="fs-product-badge hot">Trending</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/TR05LCBLSE">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/TR05LCBLSE">Lace Detail Blouse</a></h3>
+            <div class="fs-product-price">₹949 <span class="original">₹1,299</span></div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><span class="review-count">(198)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="TR05LCBLSE">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-product-card">
+          <div class="fs-product-img">
+            <img loading="lazy" src="/static/images/product-6.webp" alt="Utility Cargo Pants">
+            <span class="fs-product-badge hot">Trending</span>
+            <div class="fs-product-overlay"><a href="{{ $.baseUrl }}/product/TR06UTILCP">View Product</a></div>
+          </div>
+          <div class="fs-product-body">
+            <h3><a href="{{ $.baseUrl }}/product/TR06UTILCP">Utility Cargo Pants</a></h3>
+            <div class="fs-product-price">₹1,349</div>
+            <div class="fs-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><span class="review-count">(241)</span></div>
+            <form action="{{ $.baseUrl }}/cart" method="POST">
+              <input type="hidden" name="product_id" value="TR06UTILCP">
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="fs-add-cart-btn"><i class="bi bi-cart-plus"></i> Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     WHY CHOOSE US
+===================================================== -->
+<section class="fs-section">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">Our Promise</span>
+      <h2>Why Choose Us</h2>
+      <p>We put quality and your satisfaction first</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-value-card">
+          <div class="fs-value-img"><img loading="lazy" src="/static/images/blog-post-1.webp" alt="Quality"></div>
+          <div class="fs-value-body">
+            <div class="fs-value-icon"><i class="bi bi-award"></i></div>
+            <h3>Premium Quality</h3>
+            <p>Every item meets our high standards before reaching you.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-value-card">
+          <div class="fs-value-img"><img loading="lazy" src="/static/images/blog-post-2.webp" alt="Shipping"></div>
+          <div class="fs-value-body">
+            <div class="fs-value-icon"><i class="bi bi-lightning-charge"></i></div>
+            <h3>Fast Delivery</h3>
+            <p>Express delivery across India with real-time tracking.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-value-card">
+          <div class="fs-value-img"><img loading="lazy" src="/static/images/blog-post-3.webp" alt="Payments"></div>
+          <div class="fs-value-body">
+            <div class="fs-value-icon"><i class="bi bi-credit-card"></i></div>
+            <h3>Secure Payments</h3>
+            <p>UPI, cards, wallets &amp; COD. Fully encrypted.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="fs-value-card">
+          <div class="fs-value-img"><img loading="lazy" src="/static/images/blog-post-4.webp" alt="Returns"></div>
+          <div class="fs-value-body">
+            <div class="fs-value-icon"><i class="bi bi-arrow-return-left"></i></div>
+            <h3>Easy Returns</h3>
+            <p>Return within 30 days for a full refund — no questions asked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     BLOG POSTS
+===================================================== -->
+<section class="fs-section fs-section-alt">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">Blog</span>
+      <h2>Fashion Tips &amp; Trends</h2>
+      <p>Stay ahead of the style curve</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-blog-card">
+          <div class="fs-blog-img"><img loading="lazy" src="/static/images/blog-post-5.webp" alt="Trends 2026"></div>
+          <div class="fs-blog-body">
+            <p class="fs-blog-cat">Trends</p>
+            <h3><a href="#">Top Fashion Trends Dominating 2026</a></h3>
+            <p>From bold monochromes to sustainable fabrics — discover what's hot this year and how to style them effortlessly.</p>
+            <a href="#" class="fs-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-blog-card">
+          <div class="fs-blog-img"><img loading="lazy" src="/static/images/blog-post-portrait-1.webp" alt="Capsule Wardrobe"></div>
+          <div class="fs-blog-body">
+            <p class="fs-blog-cat">Style Guide</p>
+            <h3><a href="#">How to Build the Perfect Capsule Wardrobe</a></h3>
+            <p>Less is more. Learn how 20 versatile pieces can give you 100+ outfit combinations for any occasion.</p>
+            <a href="#" class="fs-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-blog-card">
+          <div class="fs-blog-img"><img loading="lazy" src="/static/images/blog-post-6.webp" alt="Sustainable Fashion"></div>
+          <div class="fs-blog-body">
+            <p class="fs-blog-cat">Sustainable</p>
+            <h3><a href="#">Sustainable Fashion: Dress Well, Do Good</a></h3>
+            <p>Explore eco-friendly fabrics, ethical brands, and how your wardrobe choices can make a positive impact.</p>
+            <a href="#" class="fs-read-more">Read More <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     FAQ
+===================================================== -->
+<section class="fs-section">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">FAQ</span>
+      <h2>Frequently Asked Questions</h2>
+      <p>Everything you need to know about Quntamvector EKART</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="50">
+
+        <div class="fs-faq-item">
+          <button class="fs-faq-btn" aria-expanded="true" data-target="faq1">
+            <i class="bi bi-question-circle-fill icon-q"></i>
+            What is your return policy?
+            <i class="bi bi-chevron-down icon-chevron"></i>
+          </button>
+          <div class="fs-faq-body" id="faq1">We offer a 30-day hassle-free return policy. Return any item for a full refund — no questions asked.</div>
+        </div>
+
+        <div class="fs-faq-item">
+          <button class="fs-faq-btn" aria-expanded="false" data-target="faq2">
+            <i class="bi bi-question-circle-fill icon-q"></i>
+            How long does delivery take?
+            <i class="bi bi-chevron-down icon-chevron"></i>
+          </button>
+          <div class="fs-faq-body" id="faq2" style="display:none;">Standard delivery takes 3–5 business days across India. Free shipping on all orders above ₹999.</div>
+        </div>
+
+        <div class="fs-faq-item">
+          <button class="fs-faq-btn" aria-expanded="false" data-target="faq3">
+            <i class="bi bi-question-circle-fill icon-q"></i>
+            What payment methods are accepted?
+            <i class="bi bi-chevron-down icon-chevron"></i>
+          </button>
+          <div class="fs-faq-body" id="faq3" style="display:none;">UPI, credit/debit cards (Visa, Mastercard, RuPay), net banking, popular wallets, and Cash on Delivery (COD).</div>
+        </div>
+
+        <div class="fs-faq-item">
+          <button class="fs-faq-btn" aria-expanded="false" data-target="faq4">
+            <i class="bi bi-question-circle-fill icon-q"></i>
+            Are the products authentic?
+            <i class="bi bi-chevron-down icon-chevron"></i>
+          </button>
+          <div class="fs-faq-body" id="faq4" style="display:none;">All products are 100% authentic and sourced from authorized manufacturers. Quality guaranteed on every order.</div>
+        </div>
+
+        <div class="fs-faq-item">
+          <button class="fs-faq-btn" aria-expanded="false" data-target="faq5">
+            <i class="bi bi-question-circle-fill icon-q"></i>
+            Is this a real store?
+            <i class="bi bi-chevron-down icon-chevron"></i>
+          </button>
+          <div class="fs-faq-body" id="faq5" style="display:none;">Quntamvector EKART is a demo e-commerce application created for educational and demonstration purposes. No real transactions are processed.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     CONTACT STRIP
+===================================================== -->
+<section class="fs-section fs-section-alt">
+  <div class="container">
+    <div class="fs-section-title" data-aos="fade-up">
+      <span class="fs-section-badge">Contact</span>
+      <h2>Get In Touch</h2>
+      <p>We're here to help</p>
+    </div>
+    <div class="row gy-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="fs-contact-item">
+          <i class="bi bi-geo-alt-fill"></i>
+          <div><h3>Location</h3><p>Quntamvector Campus, Bengaluru, Karnataka — 560001</p></div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="fs-contact-item">
+          <i class="bi bi-telephone-fill"></i>
+          <div><h3>Call Us</h3><p>+91 98765 43210 (Demo Only)</p></div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="fs-contact-item">
+          <i class="bi bi-envelope-fill"></i>
+          <div><h3>Email Us</h3><p>demo@quntamvector.com</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ template "footer" . }}
+
+</main>
+
+{{ end }}
