@@ -16,6 +16,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
+                    cd img_pipeline/adservice
                     printenv
                     docker build -t ${IMAGE_NAME} .
                 '''
