@@ -14,19 +14,29 @@ pipeline {
         }
 
         stage('Run Unit Tests') {
-            steps {
-                sh 'go test ./...'
-            }
+    steps {
+        dir('checkoutservice') {
+            sh '''
+                pwd
+                ls -la
+                go test ./...
+            '''
         }
+    }
+}
 
-        stage('Docker Build') {
-            steps {
-                sh '''
-                    printenv
-                    docker build -t ${IMAGE_NAME} .
-                '''
-            }
+stage('Docker Build') {
+    steps {
+        dir('checkoutservice') {
+            sh '''
+                pwd
+                ls -la
+                printenv
+                docker build -t ${IMAGE_NAME} .
+            '''
         }
+    }
+}
 
         stage('Login to Docker Hub') {
             steps {
