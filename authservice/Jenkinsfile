@@ -14,13 +14,16 @@ pipeline {
         }
 
         stage('Docker Build') {
-            steps {
-                sh '''
-                    printenv
-                    docker build -t ${IMAGE_NAME} .
-                '''
-            }
+    steps {
+        dir('authservice') {
+            sh '''
+                pwd
+                ls -la
+                docker build -t ${IMAGE_NAME} .
+            '''
         }
+    }
+}
 
         stage('Login to Docker Hub') {
             steps {
