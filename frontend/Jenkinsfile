@@ -15,13 +15,19 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                sh 'go test ./...'
+                dir('frontend') {
+            sh '''
+                pwd
+                ls -la
+                go test ./...
+            '''
+        }
             }
         }
 
         stage('Docker Build') {
             steps {
-                dir('emailservice') {
+                dir('frontend') {
                     sh '''
                         pwd
                         ls -la
