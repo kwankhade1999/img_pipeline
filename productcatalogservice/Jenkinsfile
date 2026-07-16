@@ -2,29 +2,33 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "manojkrishnappa/productcatalogservice:${GIT_COMMIT}"
+        IMAGE_NAME = "kunalwankhade/productcatalogservice:${GIT_COMMIT}"
     }
 
     stages {
 
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/QuntamVector/productcatalogservice.git', branch: 'main'
+                git url: 'https://github.com/kwankhade1999/img_pipeline.git', branch: 'main'
             }
         }
 
         stage('Run Unit Tests') {
             steps {
-                sh 'go test ./...'
+                dir('productcatalogservice') {
+                    sh 'go test ./...'
+                }
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    printenv
-                    docker build -t ${IMAGE_NAME} .
-                '''
+                dir('productcatalogservice') {
+                    sh '''
+                        printenv
+                        docker build -t ${IMAGE_NAME} .
+                    '''
+                }
             }
         }
 
@@ -58,7 +62,7 @@ pipeline {
                             echo "gitops directory exists. Removing it..."
                             rm -rf gitops
                         fi
-                        git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/QuntamVector/GitOps.git gitops
+                        git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/kwankhade1999/prod_project.git gitops
                         cd gitops/base/productcatalogservice/
 
                         git config user.email "jenkins@ci.com"
