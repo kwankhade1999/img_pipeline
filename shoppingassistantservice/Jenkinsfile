@@ -23,7 +23,7 @@ stages {
                 '''
             }
     }
-
+}
     stage('Login to Docker Hub') {
         steps {
             withCredentials([usernamePassword(
