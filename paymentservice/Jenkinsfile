@@ -2,23 +2,25 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "manojkrishnappa/paymentservice:${GIT_COMMIT}"
+        IMAGE_NAME = "kunalwankhade/paymentservice:${GIT_COMMIT}"
     }
 
     stages {
 
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/QuntamVector/paymentservice.git', branch: 'main'
+                git url: 'https://github.com/kwankhade1999/img_pipeline.git', branch: 'main'
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    printenv
-                    docker build -t ${IMAGE_NAME} .
-                '''
+                dir('paymentservice') {
+                    sh '''
+                        printenv
+                        docker build -t ${IMAGE_NAME} .
+                    '''
+                }
             }
         }
 
@@ -52,7 +54,7 @@ pipeline {
                             echo "gitops directory exists. Removing it..."
                             rm -rf gitops
                         fi
-                        git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/QuntamVector/GitOps.git gitops
+                        git clone https://$GIT_USERNAME:$GIT_PASSWORD@github.com/kwankhade1999/prod_project.git gitops
                         cd gitops/base/paymentservice/
 
                         git config user.email "jenkins@ci.com"
