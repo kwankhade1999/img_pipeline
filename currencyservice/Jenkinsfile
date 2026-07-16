@@ -15,11 +15,13 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    pwd
-                    ls -la
-                    docker build -t ${IMAGE_NAME} .
-                '''
+                dir('currencyservice') {
+                    sh '''
+                        pwd
+                        ls -la
+                        docker build -t ${IMAGE_NAME} .
+                    '''
+                }
             }
         }
 
