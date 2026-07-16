@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "manojkrishnappa/loadgenerator:${GIT_COMMIT}"
+        IMAGE_NAME = "kunalwankhade/loadgenerator:${GIT_COMMIT}"
         AWS_REGION = "us-west-2"
         CLUSTER_NAME = "itkannadigaru-cluster"
         NAMESPACE     = "itkannadigaru"
@@ -12,13 +12,13 @@ pipeline {
 
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/ManojKRISHNAPPA/Microservice.git', branch: 'main'
+                git url: 'https://github.com/kwankhade1999/img_pipeline.git', branch: 'main'
             }
         }
 
         stage('Docker Build') {
             steps {
-                dir('src/loadgenerator') {
+                dir('loadgenerator') {
                     sh '''
                         printenv
                         docker build -t ${IMAGE_NAME} .
