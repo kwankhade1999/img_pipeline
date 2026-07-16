@@ -14,8 +14,8 @@ stages {
         }
     }
 
-    stage('Docker Build') {
-        steps {
+         stage('Docker Build') {
+          steps {
             dir('shoppingassistantservice') {
                 sh '''
                     printenv
