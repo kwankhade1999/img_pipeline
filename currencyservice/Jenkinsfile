@@ -16,6 +16,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh '''
+                    pwd
+                    ls -la
                     printenv
                     docker build -t ${IMAGE_NAME} .
                 '''
